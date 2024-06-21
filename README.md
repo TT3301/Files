@@ -4,7 +4,7 @@
   <img src="https://raw.githubusercontent.com/TT3301/QX/main/icon/PacMan.png">
 </p>
 
-## available branches and explain
+## 合集列表
 
 | Name   | Description                                                   |
 | ------------- | ------------------------------------------------------------- |
