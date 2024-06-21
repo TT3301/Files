@@ -1,0 +1,53 @@
+name: 自动抓取Sync机器人
+
+on:
+  schedule:
+    # 每天 UTC 时间3点0分运行一次
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    # 手动触发
+
+permissions:
+  contents: write
+
+jobs:
+  update-files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Fetch the latest script files
+        run: curl -o Script/resource-parser.js https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/Scripts/resource-parser.js
+
+      - name: Fetch the latest IPTV files
+        run: |
+          curl -o IPTV/bilibili.m3u https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/bi.m3u
+          curl -o IPTV/douyu.js https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/yu.m3u
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add script/ IPTV/
+          if git diff --cached --quiet; then
+            echo "No changes detected"
+            echo "::set-output name=changed::false"
+          else
+            echo "Changes detected"
+            echo "::set-output name=changed::true"
+          fi
+
+      - name: Commit and push changes
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git commit -m '机器人同步: Update Finish【👌】'
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
