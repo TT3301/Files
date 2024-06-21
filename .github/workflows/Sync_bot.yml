@@ -30,6 +30,7 @@ jobs:
           curl -o IPTV/bilibili.m3u https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/bi.m3u
           curl -o IPTV/douyu.m3u https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/yu.m3u
           curl -o IPTV/huya.m3u https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/ya.m3u
+          curl -o IPTV/radio.m3u https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/radio.m3u
 
       - name: Check for changes
         id: changes
