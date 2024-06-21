@@ -8,7 +8,7 @@
 
 | Name   | Description                                                   |
 | ------------- | ------------------------------------------------------------- |
-| IPTV源 | https://raw.githubusercontent.com/TT3301/Files/main/IPTV/bilibili.m3u      |
+| IPTV源 | bilibili.m3u #站直播      |
 | socks5        | Branch for SOCKS5 proxyIP implementation                      |
 
 
