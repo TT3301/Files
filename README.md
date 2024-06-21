@@ -8,8 +8,8 @@
 
 | Name   | Description                                                   |
 | ------------- | ------------------------------------------------------------- |
-| IPTV源 | bilibili.m3u #站直播      |
-| socks5        | Branch for SOCKS5 proxyIP implementation                      |
+| IPTV源 | bilibili.m3u # B站直播      |
+| IPTV源 | douyu.m3u # 斗鱼直播           |
 
 
 
